@@ -1,0 +1,141 @@
+.carousel-container {
+    display: flex;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-image: url('../../../../../public/fondo_home.jpg'); /* Reemplaza con la ruta de tu imagen */
+    background-size: cover; /* Ajusta la imagen para que cubra todo el contenedor */
+    background-position: center; /* Centra la imagen */
+    position: relative; /* Necesario para el color de fondo */
+}
+
+.carousel-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Color negro con 50% de opacidad */
+    z-index: 1; /* Coloca el color detrás del contenido */
+}
+
+.carousel-container > * {
+    position: relative; /* Asegura que el contenido se muestre sobre el fondo */
+    z-index: 2; /* Coloca el contenido por encima del fondo */
+}
+
+.carousel {
+    display: flex;
+    overflow: hidden; /* Oculta tarjetas que no están visibles */
+    width: 80%;
+    text-align: center;
+}
+
+.carousel-card {
+    height: 500px;
+    width: 400px;
+    margin: 0 10px; /* Espaciado entre tarjetas */
+    display: flex;
+    flex-direction: column; /* Apilar elementos verticalmente */
+    align-items: center; /* Centrar horizontalmente */
+    opacity: 0.5; /* Para las tarjetas no activas */
+    transition: opacity 0.5s ease-in-out; /* Transición suave */
+}
+
+.carousel-card.active {
+    opacity: 1; /* Tarjeta activa completamente visible */
+}
+
+.carousel h2 {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0; /* Elimina margen para centrar mejor */
+    width: 100%; /* Asegura que ocupe todo el ancho de la tarjeta */
+}
+
+.carousel p {
+    font-size: 16px;
+    padding-top: 15px;
+    text-align: justify;
+}
+
+.icon {
+    background-color: rgb(124, 225, 233);
+    height: 50px; /* Ajusta según sea necesario */
+    width: 60px; /* Ajusta según sea necesario */
+    border-radius: 120px 120px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    overflow: visible; /* Asegura que el contenido no se corte */
+}
+
+.icon mat-icon {
+    position: absolute;
+    top: 50%; /* Centrado vertical */
+    left: 50%; /* Centrado horizontal */
+    transform: translate(-50%, -50%); /* Centrado completo */
+    z-index: 2; /* Asegúrate de que esté por encima */
+    font-size: 25px; /* Ajustar tamaño del icono */
+}
+
+.button-container {
+    position: absolute; /* Position the button in the card */
+    bottom: 20px; /* Position from the bottom of the card */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center the button horizontally */
+}
+
+.nav-button {
+    color: white; /* Cambia el color del icono a blanco */
+    background-color: transparent; /* Mantiene el fondo transparente */
+}
+
+.nav-button:hover {
+    background-color: rgba(255, 255, 255, 0.2)
+}
+
+@media (max-width: 600px) { 
+    .carousel-container {
+        display: flex;
+        height: 500px; /* Ajusta la altura según sea necesario */
+    }
+
+    .carousel {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        overflow: hidden; /* Asegúrate de ocultar tarjetas no visibles */
+    } 
+
+    .carousel-card {
+        flex: 0 0 100%; /* Hacer que la tarjeta ocupe el 100% del ancho */
+        margin: 0; /* Eliminar margen lateral */
+        opacity: 1; /* Asegurarse de que la tarjeta activa esté completamente visible */
+    }
+
+    .carousel h2 {
+        font-size: 16px; /* Ajustar tamaño del título para pantallas pequeñas */
+        margin: 10px 0; /* Añadir margen superior e inferior */
+    }
+
+    .carousel p {
+        font-size: 12px;
+        text-align: justify;
+        margin: 0 10px;
+    }
+    
+    .button-container {
+        bottom: 15px; /* Ajustar posición del botón */
+    }
+
+    .button-container button {
+        font-size: 12px;
+    }
+}

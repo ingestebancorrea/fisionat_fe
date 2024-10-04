@@ -1,0 +1,23 @@
+<div class="tab-container">
+  <!-- Columna para los labels -->
+  <div class="tab-labels">
+    <ng-container *ngFor="let tab of tabs; let i = index">
+      <button 
+        mat-button 
+        (click)="selectedIndex = i" 
+        [ngClass]="{'active-tab': selectedIndex === i, 'inactive-tab': selectedIndex !== i}"
+        class="tab-button">
+        <h6>{{ tab.label }}</h6>
+      </button>
+    </ng-container>
+  </div>
+
+  <!-- Columna para el contenido -->
+  <div class="tab-content">
+    <ng-container *ngFor="let tab of tabs; let i = index">
+      <div *ngIf="selectedIndex === i">
+        <p>{{ tab.content }}</p>
+      </div>
+    </ng-container>
+  </div>
+</div>

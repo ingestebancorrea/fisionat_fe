@@ -1,0 +1,74 @@
+.tab-container {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.tab-labels {
+    display: flex;
+    flex-direction: column;
+    width: 10%; /* Ajusta este valor según sea necesario */
+    border-right: 1px solid #ccc;
+    padding: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.tab-button {
+    width: 100%;
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    background-color: transparent; /* Fondo transparente por defecto */
+    border: none; /* Sin borde por defecto */
+}
+
+.tab-button h6 {
+    color: rgb(247, 159, 181);
+    font-weight: bold;
+}
+
+.active-tab {
+    background-color: white;
+    border: none;
+    border-bottom: 2px solid rgb(124, 225, 233);
+}
+
+.inactive-tab {
+    background-color: transparent; /* Fondo transparente */
+    border: none; /* Sin borde */
+    color: inherit; /* Mantener el color de texto predeterminado */
+}
+
+.tab-content {
+    display: flex;
+    width: 40%; /* Ajusta este valor según sea necesario */
+    padding: 16px;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 600px) {
+    .tab-labels {
+        width: 50%;
+    }
+
+    .tab-button h6 {
+        font-size: 16px;
+    }
+
+    .tab-content {
+        flex-direction: column; /* Cambia la dirección a columna */
+        align-items: stretch; /* Para que ocupe todo el ancho */
+        width: 100%; /* También ocupará el ancho completo en móviles */
+    }
+
+    .tab-content p {
+        font-size: 12px;
+    }
+}

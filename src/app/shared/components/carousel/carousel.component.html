@@ -1,0 +1,28 @@
+<div class="carousel-container">
+    <button mat-icon-button (click)="prev()" aria-label="Previous" class="nav-button">
+        <mat-icon>chevron_left</mat-icon>
+    </button>
+
+    <div class="carousel">
+        <mat-card *ngFor="let card of displayedCards; let i = index" 
+                  class="carousel-card" 
+                  [class.active]="isActive(i)">
+            <mat-card-header>
+                <h2>{{ card.title }}</h2>
+            </mat-card-header>
+            <div class="icon">
+                <mat-icon>{{ card.icon }}</mat-icon>
+            </div>
+            <mat-card-content>
+                <p>{{ card.content }}</p>
+                <div class="button-container">
+                    <button mat-raised-button [routerLink]="card.route">Ver servicio</button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <button mat-icon-button (click)="next()" aria-label="Next" class="nav-button">
+        <mat-icon>chevron_right</mat-icon>
+    </button>
+</div>

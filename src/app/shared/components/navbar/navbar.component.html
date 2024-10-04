@@ -1,0 +1,39 @@
+<mat-toolbar class="navbar">
+    <div class="logo-container">
+        <a routerLink="/" mat-button>
+            <img src="logo.png" alt="Logo">
+        </a>
+    </div>
+
+    <div class="nav-links">
+        <a routerLink="/about" mat-button routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+            Nosotros
+        </a>
+        <a mat-button [matMenuTriggerFor]="lazyMenu" routerLinkActive="active-link">
+            Servicios
+        </a>
+        <a routerLink="/contact" mat-button routerLinkActive="active-link">
+            Contáctanos
+        </a>
+    </div>
+    
+    <button mat-icon-button (click)="toggleMobileMenu()" class="menu-button" *ngIf="isMobile">
+        <mat-icon>menu</mat-icon>
+    </button>
+    
+    <div *ngIf="isMobile && mobileMenuOpen" class="mobile-menu">
+        <a routerLink="/about" mat-button routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Nosotros</a>
+        <a mat-button [matMenuTriggerFor]="lazyMenu" routerLinkActive="active-link">Servicios</a>
+        <a routerLink="/contact" mat-button routerLinkActive="active-link">Contáctanos</a>
+    </div>
+
+    <div *ngIf="isMobile && mobileMenuOpen" class="overlay" (click)="toggleMobileMenu()"></div>
+</mat-toolbar>
+
+<mat-menu #lazyMenu="matMenu">
+    <button mat-menu-item [routerLink]="'/services/physical-therapy'">Terapia física</button>
+    <button mat-menu-item [routerLink]="'/services/neurorehabilitation'">Neurorehabilitación</button>
+    <button mat-menu-item [routerLink]="'/services/early-stimulation'">Estimulación temprana</button>
+    <button mat-menu-item [routerLink]="'/services/geriatric-physiotherapy'">Fisioterapia geriátrica</button>
+    <button mat-menu-item [routerLink]="'/services/pediatric-physiotherapy'">Fisioterapia pediátrica</button>
+</mat-menu>

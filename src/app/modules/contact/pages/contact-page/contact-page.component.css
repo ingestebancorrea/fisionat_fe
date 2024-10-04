@@ -1,0 +1,135 @@
+.contact-hero {
+    position: relative;
+    width: 100%;
+    height: 400px;
+}
+
+.contact-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(2, 1, 1, 0.5);
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 40px;
+    margin: 0;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin: 0;
+}
+
+.contact-form-container {
+    display: flex;
+    justify-content: center;
+}
+
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.form-header {
+    text-align: center;
+}
+
+.form-header h1 {
+    font-size: 30px;
+    color: rgb(247, 159, 181);
+    font-weight: bold;
+}
+
+.form-description {
+    margin: 0 20px;
+}
+
+.form-description p {
+    text-align: justify;
+}
+
+.form-row {
+    display: flex;
+    gap: 16px;
+    margin: 0 20px;
+    justify-content: center;
+}
+
+.double-column {
+    display: flex;
+    margin: 0 20px;
+    justify-content: center;
+}
+
+.full-width {
+    width: 70%; 
+}
+
+.form-submit {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0; /* Espaciado alrededor del botón */
+}
+
+@media (max-width: 600px) {
+    .contact-hero {
+        height: 200px;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 16px;
+    }
+
+    .hero-content p {
+        font-size: 12px;
+    }
+
+    .form-wrapper {
+        width: 80%;
+    }
+
+    .form-row {
+        flex-direction: column; /* Cambia a columna para dispositivos móviles */
+    }
+
+    .double-column {
+        flex-direction: column; /* Asegura que los campos se apilen en móviles */
+    }
+
+    .full-width {
+        width: 100%;
+    }
+
+    .form-header h1 {
+        font-size: 16px;
+    }
+
+    .form-description p {
+        font-size: 12px;
+    }
+}

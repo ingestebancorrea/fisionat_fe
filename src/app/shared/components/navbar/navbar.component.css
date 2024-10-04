@@ -1,0 +1,70 @@
+.navbar {
+    display: flex; /* Asegúrate de que el contenedor sea flexbox */
+    justify-content: space-between; /* Sin comillas */
+    height: auto;
+}
+
+a {
+    padding-right: 1rem;
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+img {
+    width: 90%;
+    height: 89px;
+}
+
+.active-link {
+    color: rgb(124, 225, 233);
+    font-weight: bold;
+}
+
+.menu-button {
+    display: none;
+    color: rgb(124, 225, 233);
+    border: 1px solid rgb(124, 225, 233);
+    border-radius: 80%;
+    padding: 8px;
+    transition: background-color 0.3s;
+}
+
+.menu-button:hover {
+    background-color: rgba(0, 0, 255, 0.1); /* Fondo al pasar el mouse */
+}
+
+
+
+@media (max-width: 600px) {
+    .nav-links {
+      display: none; /* Ocultar enlaces en pantalla pequeña */
+    }
+  
+    .menu-button {
+      display: block; /* Mostrar botón de menú */
+    }
+
+    .mobile-menu {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        background-color: white;
+        padding: 10px;
+        position: absolute; /* Mantén el menú absoluto para que se posicione sobre el overlay */
+        top: 95px;
+        left: 0;
+        right: 0;
+        z-index: 200; /* sobre el overlay */
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 100; /* debajo del menú */
+    }
+}

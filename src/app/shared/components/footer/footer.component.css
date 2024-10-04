@@ -1,0 +1,108 @@
+.footer-container {
+    background-color: rgb(124, 225, 233);
+    margin-bottom: 40px;
+    padding: 30px;
+}
+
+.footer-column ul {
+    margin: 0; /* Quita el margen por defecto */
+}
+
+.footer-column ul li {
+    list-style-type: circle; /* Asegúrate de que la lista tenga un tipo de marcador */
+    font-size: 14px;
+}
+
+.footer-column ul li::marker {
+    font-size: 20px; /* Tamaño del marcador */
+    color: rgb(247, 159, 181);
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-weight: 10px;
+}
+
+p { 
+    font-size: 14px;
+}
+
+.footer-content {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.footer-column h2 {
+    text-align: center;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.footer-column h2 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.footer-column ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; /* Asegúrate de que no haya viñetas */
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+}
+
+.contact-icon {
+    color: rgb(247, 159, 181);
+}
+
+.contact-info {
+    margin-left: 5px;
+}
+
+.contact-label {
+    font-weight: bold;
+    margin: 0;
+}
+
+.footer-bottom {
+    margin-left: 50px;
+    padding-bottom: 20px;
+    text-align: left; /* Alineación a la izquierda para el pie de página */
+}
+
+.footer-bottom p {
+    font-size: 14px;
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 600px) {
+    .footer-content {
+        flex-direction: column; /* Cambiar dirección en pantallas pequeñas */
+        align-items: center; /* Centrar el contenido */
+    }
+
+    .footer-column {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px; /* Espacio entre columnas */
+    }
+
+    .footer-bottom {
+        margin-left: 0; /* Centrar el pie de página */
+    }
+
+    .contact-item {
+        width: 100%;
+        justify-content: center;
+        padding: 0;
+    }
+}
