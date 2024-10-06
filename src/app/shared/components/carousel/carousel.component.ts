@@ -18,20 +18,24 @@ import { MatButtonModule } from '@angular/material/button';
     RouterLink
   ],
   templateUrl: './carousel.component.html',
-  styleUrl: './carousel.component.css'
+  styleUrls: ['./carousel.component.css']
 })
 export class CarouselComponent implements OnInit, OnDestroy {
   displayedCards: Card[] = [];
   currentIndex = 0;
   interval: any;
+  cardsToShow: number = 4; // Default number of cards to show
 
   ngOnInit() {
     this.updateDisplayedCards();
     this.startAutoSlide();
+    this.updateCardsToShow();
+    window.addEventListener('resize', this.updateCardsToShow.bind(this));
   }
 
   ngOnDestroy() {
     this.stopAutoSlide();
+    window.removeEventListener('resize', this.updateCardsToShow.bind(this));
   }
 
   startAutoSlide() {
@@ -57,16 +61,29 @@ export class CarouselComponent implements OnInit, OnDestroy {
   }
 
   updateDisplayedCards() {
-    const start = this.currentIndex - 1; // Adjust to show three cards
-    this.displayedCards = [
-      cards[(start + cards.length) % cards.length], // Previous
-      cards[this.currentIndex],
-      cards[(this.currentIndex + 1) % cards.length] // Next
-    ];
+    this.displayedCards = this.getVisibleCards();
+  }
+
+  getVisibleCards(): Card[] {
+    const start = this.currentIndex;
+    return Array.from({ length: this.cardsToShow }, (_, i) => 
+      cards[(start + i) % cards.length]
+    );
+  }
+
+  updateCardsToShow() {
+    const width = window.innerWidth;
+    if (width < 1040) {
+      this.cardsToShow = 2; // Pantallas medianas (tabletas)
+    } else if (width < 1280) {
+      this.cardsToShow = 3;// Pantallas grandes (laptops pequeñas)
+    } else {
+      this.cardsToShow = 4;// Pantallas muy grandes (laptops/desktops)
+    }
+    this.updateDisplayedCards(); // Update displayed cards when changing layout
   }
 
   isActive(index: number) {
-    return index === 1; // The middle card is always active
+    return index === 1; // Ajusta según cuál tarjeta esté activa
   }
-  
 }

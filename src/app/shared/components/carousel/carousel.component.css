@@ -30,7 +30,7 @@
 .carousel {
     display: flex;
     overflow: hidden; /* Oculta tarjetas que no están visibles */
-    width: 80%;
+    width: 90%;
     text-align: center;
 }
 

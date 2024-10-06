@@ -76,11 +76,19 @@
     justify-content: center;
 }
 
+.form-row mat-form-field  {
+    width: 100%;
+}
+
 .double-column {
     display: flex;
     margin: 0 20px;
     justify-content: center;
 }
+
+.double-column mat-form-field  { 
+    width: 100%;
+ }
 
 .full-width {
     width: 70%; 

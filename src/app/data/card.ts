@@ -9,7 +9,7 @@ export const cards: Card[] = [
     },
     {
         title: 'Neurorehabilitación',
-        content: 'Ofrecemos un enfoque integral para ayudar a las personas a recuperar funciones motoras y cognitivas tras lesiones o enfermedades neurológicas. Nuestro equipo de expertos proporciona terapias personalizadas que optimizan la recuperación y mejoran la calidad de vida, promoviendo la independencia en cada etapa del proceso. ¡Solicita tu consulta hoy!',
+        content: 'Nuestro servicio de neurorehabilitación está diseñado para ayudar a los pacientes con lesiones o enfermedades del sistema nervioso a recuperar su función cognitiva, motora y emocional. Con programas específicos y personalizados  trabajando en estrecha colaboración con los pacientes y sus familias.',
         icon: "psychology",
         route: ""
     },
