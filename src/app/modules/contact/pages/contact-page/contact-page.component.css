@@ -122,11 +122,11 @@
     }
 
     .form-row {
-        flex-direction: column; /* Cambia a columna para dispositivos móviles */
+        flex-direction: column;
     }
 
     .double-column {
-        flex-direction: column; /* Asegura que los campos se apilen en móviles */
+        flex-direction: column;
     }
 
     .full-width {

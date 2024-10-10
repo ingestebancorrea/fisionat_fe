@@ -1,0 +1,39 @@
+.geriatric-hero {
+    position: relative;
+    width: 100%;
+    height: 400px;
+}
+
+.geriatric-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(2, 1, 1, 0.5);
+}
+
+.geriatric-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+
+.geriatric-content h1 {
+    font-size: 40px;
+    margin: 0;
+}
+
+.geriatric-content p {
+    font-size: 18px;
+    margin: 0;
+}
