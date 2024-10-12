@@ -2,3 +2,82 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.services-section {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(247, 159, 181);
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 40px;
+}
+
+.services-section h2 {
+    color: rgb(124, 225, 233);
+    font-weight: bold;
+    padding-top: 40px;
+}
+
+.services-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+
+.service-item {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    background-color: white;
+    border: 2px solid rgb(124, 225, 233); 
+    border-radius: 50%; 
+    padding: 10px;          
+    display: flex;          
+    justify-content: center; 
+    align-items: center;    
+    width: 60px;             
+    height: 60px;  
+}
+
+.mat-icon {
+    font-size: 24px;          
+    color: rgb(124, 225, 233);
+}
+
+.hexagon-collage {
+    display: flex;                      
+    justify-content: center;            
+    align-items: flex-end;
+    position: relative;
+}
+
+.column {
+    display: flex;                     
+    height: 750px;
+    padding-bottom: 40px;
+    justify-content: center;
+    flex-direction: column;           
+    align-items: center;               
+    margin: 0;                       
+}
+
+.column:first-child {
+    margin-right: -50px;               
+}
+
+.column:last-child {
+    margin-left: -50px;                
+}
+
+.hexagon-image {
+    width: 300px;                     
+    height: 250px; 
+    padding: 4px;                      
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}

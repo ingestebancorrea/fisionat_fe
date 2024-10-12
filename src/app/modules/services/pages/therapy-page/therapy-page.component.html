@@ -5,35 +5,40 @@
         <img src="terapia_fisica.jpg" alt="Terapia">
         <div class="overlay"></div>
         <div class="teraphy-content">
-            <h1>Terapia fisica</h1>
-            <p>Si requieres más detalles sobre nuestros servicios o tienes alguna pregunta, no dudes en contactarnos,
-                estamos
-                aquí para ayudarte.</p>
+            <h1>Terapia física</h1>
         </div>
     </div>
-
-    
 
     <div class="services-section">
         <h2>Servicios que ofrecemos</h2>
         <div class="services-container">
-            <div class="service-item">
+            <div class="service-item" *ngFor="let service of displayedPhysicalTherapy">
                 <div class="icon">
-                    <mat-icon>menu_book</mat-icon>
+                    <mat-icon>{{ service.icon }}</mat-icon>
                 </div>
-                <p>Desarrollo profesional.</p>
+                <p>{{ service.description }}</p>
             </div>
-            <div class="service-item">
-                <div class="icon">
-                    <mat-icon>handshake</mat-icon>
-                </div>
-                <p>Integridad Ética.</p>
+        </div>
+    </div>
+
+    <div>
+        <h1 style="color: pink; font-size: 52px; font-weight: bold; text-align: center; padding-top: 20px;">Experiencias</h1>
+
+        <div class="hexagon-collage">
+            <div class="column">
+                <img src="terapia_fisica_1.jpg" alt="Imagen 1" class="hexagon-image">
+                <img src="terapia_fisica_2.jpg" alt="Imagen 2" class="hexagon-image">
             </div>
-            <div class="service-item">
-                <div class="icon">
-                    <mat-icon>lock</mat-icon>
-                </div>
-                <p>Confidencialidad y privacidad.</p>
+        
+            <div class="column">
+                <img src="terapia_fisica_3.jpg" alt="Imagen 3" class="hexagon-image">
+                <img src="terapia_fisica_4.jpg" alt="Imagen 4" class="hexagon-image">
+                <img src="terapia_fisica_5.jpg" alt="Imagen 5" class="hexagon-image">
+            </div>
+        
+            <div class="column">
+                <img src="terapia_fisica_6.jpg" alt="Imagen 6" class="hexagon-image">
+                <img src="terapia_fisica_7.jpg" alt="Imagen 7" class="hexagon-image">
             </div>
         </div>
     </div>

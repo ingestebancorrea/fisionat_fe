@@ -1,12 +1,46 @@
 <app-navbar></app-navbar>
-<div class="neuro-hero">
-    <img src="neuro.jpg" alt="Terapia">
-    <div class="overlay"></div>
-    <div class="neuro-content">
-        <h1>Neurorehabilitación</h1>
-        <p>Si requieres más detalles sobre nuestros servicios o tienes alguna pregunta, no dudes en contactarnos,
-            estamos
-            aquí para ayudarte.</p>
+<div class="conatiner">
+    <div class="neuro-hero">
+        <img src="neuro.jpg" alt="Terapia">
+        <div class="overlay"></div>
+        <div class="neuro-content">
+            <h1>Neurorehabilitación</h1>
+        </div>
+    </div>
+
+    <div class="services-section">
+        <h2>Servicios que ofrecemos</h2>
+        <div class="services-container">
+            <div class="service-item" *ngFor="let service of displayedNeuro">
+                <div class="icon">
+                    <mat-icon>{{ service.icon }}</mat-icon>
+                </div>
+                <p>{{ service.description }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h1 style="color: pink; font-size: 52px; font-weight: bold; text-align: center; padding-top: 20px;">Experiencias</h1>
+
+        <div class="hexagon-collage">
+            <div class="column">
+                <img src="terapia_fisica_1.jpg" alt="Imagen 1" class="hexagon-image">
+                <img src="terapia_fisica_2.jpg" alt="Imagen 2" class="hexagon-image">
+            </div>
+        
+            <div class="column">
+                <img src="terapia_fisica_3.jpg" alt="Imagen 3" class="hexagon-image">
+                <img src="terapia_fisica_4.jpg" alt="Imagen 4" class="hexagon-image">
+                <img src="terapia_fisica_5.jpg" alt="Imagen 5" class="hexagon-image">
+            </div>
+        
+            <div class="column">
+                <img src="terapia_fisica_6.jpg" alt="Imagen 6" class="hexagon-image">
+                <img src="terapia_fisica_7.jpg" alt="Imagen 7" class="hexagon-image">
+            </div>
+        </div>
     </div>
 </div>
+
 <app-footer></app-footer>

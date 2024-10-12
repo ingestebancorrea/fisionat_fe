@@ -37,36 +37,3 @@
     font-size: 40px;
     margin: 0;
 }
-
-.teraphy-content p {
-    font-size: 18px;
-    margin: 0;
-}
-
-.services-section {
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(247, 159, 181);
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 40px;
-}
-
-.services-section h2 {
-    color: rgb(124, 225, 233);
-    font-weight: bold;
-    padding-top: 40px;
-}
-
-.services-container {
-    display: flex;
-    gap: 40px;
-}
-
-.service-item {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    justify-content: center;
-    align-items: center;
-}
