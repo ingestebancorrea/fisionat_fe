@@ -74,7 +74,7 @@ p {
 }
 
 .footer-bottom {
-    margin-left: 50px;
+    margin-left: 40px;
     padding-bottom: 20px;
     text-align: left; /* Alineación a la izquierda para el pie de página */
 }
@@ -83,7 +83,6 @@ p {
     font-size: 14px;
 }
 
-/* Media query para dispositivos móviles */
 @media (max-width: 600px) {
     .footer-content {
         flex-direction: column; /* Cambiar dirección en pantallas pequeñas */
