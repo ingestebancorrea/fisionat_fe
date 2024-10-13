@@ -12,7 +12,7 @@
         <h2>Servicios que ofrecemos</h2>
         <div class="services-container">
             <div class="service-item" *ngFor="let service of displayedGeriatricPhysiotherapy">
-                <div class="icon">
+                <div class="service-icon">
                     <mat-icon>{{ service.icon }}</mat-icon>
                 </div>
                 <p>{{ service.description }}</p>
@@ -20,8 +20,8 @@
         </div>
     </div>
 
-    <div>
-        <h1 style="color: pink; font-size: 52px; font-weight: bold; text-align: center; padding-top: 20px;">Experiencias</h1>
+    <div class="experience-container">
+        <h1>Experiencias</h1>
 
         <div class="hexagon-collage">
             <div class="column">

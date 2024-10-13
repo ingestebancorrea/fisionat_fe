@@ -32,3 +32,17 @@
     font-size: 40px;
     margin: 0;
 }
+
+@media (max-width: 600px) { 
+    .stimulation-hero {
+        height: 200px;
+    }
+
+    .stimulation-content {
+        width: 100%;
+    }
+
+    .stimulation-content h1 {
+        font-size: 16px;
+    }
+}

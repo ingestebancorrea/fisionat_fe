@@ -33,7 +33,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     align-items: center;
 }
 
-.icon {
+.service-icon {
     background-color: white;
     border: 2px solid rgb(124, 225, 233); 
     border-radius: 50%; 
@@ -45,7 +45,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     height: 60px;  
 }
 
-.mat-icon {
+.service-icon mat-icon {
     font-size: 24px;          
     color: rgb(124, 225, 233);
 }
@@ -80,4 +80,47 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     height: 250px; 
     padding: 4px;                      
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+.experience-container h1 {
+    color: rgb(247, 159, 181); 
+    font-size: 52px; 
+    font-weight: bold; 
+    text-align: center; 
+    padding-top: 20px;
+}
+
+@media (max-width: 600px) { 
+    .services-section h2 {
+        font-size: 16px;
+    }
+
+    .service-item p {
+        font-size: 12px;
+    }
+
+    .service-icon {
+        padding: 10px;
+        height: 24px;
+        width: 24px;
+    }
+
+    .experience-container h1 {
+        font-size: 16px;
+    }
+
+    .hexagon-collage {
+        width: 100%;
+    }
+
+    .column {
+        flex: 1;
+        height: 600px;
+        margin-top: 0;
+    }
+
+    .hexagon-image {
+        width: 200px;                     
+        height: 200px; 
+    }
 }

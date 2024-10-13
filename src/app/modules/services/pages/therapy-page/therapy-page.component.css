@@ -3,13 +3,13 @@
     width: 100%;
 }
 
-.teraphy-image {
+.theraphy-hero {
     position: relative;
     width: 100%;
     height: 400px;
 }
 
-.teraphy-image img {
+.theraphy-hero img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -24,7 +24,7 @@
     background-color: rgba(2, 1, 1, 0.5);
 }
 
-.teraphy-content {
+.theraphy-content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -33,7 +33,21 @@
     text-align: center;
 }
 
-.teraphy-content h1 {
+.theraphy-content h1 {
     font-size: 40px;
     margin: 0;
+}
+
+@media (max-width: 600px) { 
+    .theraphy-hero {
+        height: 200px;
+    }
+
+    .theraphy-content {
+        width: 100%;
+    }
+
+    .theraphy-content h1 {
+        font-size: 16px;
+    }
 }

@@ -1,10 +1,10 @@
 <app-navbar></app-navbar>
 
 <div class="conatiner">
-    <div class="teraphy-image">
+    <div class="theraphy-hero">
         <img src="terapia_fisica.jpg" alt="Terapia">
         <div class="overlay"></div>
-        <div class="teraphy-content">
+        <div class="theraphy-content">
             <h1>Terapia física</h1>
         </div>
     </div>
@@ -13,7 +13,7 @@
         <h2>Servicios que ofrecemos</h2>
         <div class="services-container">
             <div class="service-item" *ngFor="let service of displayedPhysicalTherapy">
-                <div class="icon">
+                <div class="service-icon">
                     <mat-icon>{{ service.icon }}</mat-icon>
                 </div>
                 <p>{{ service.description }}</p>

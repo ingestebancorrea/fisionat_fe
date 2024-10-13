@@ -32,3 +32,17 @@
     font-size: 40px;
     margin: 0;
 }
+
+@media (max-width: 600px) { 
+    .geriatric-hero {
+        height: 200px;
+    }
+
+    .geriatric-content {
+        width: 100%;
+    }
+
+    .geriatric-content h1 {
+        font-size: 16px;
+    }
+}
