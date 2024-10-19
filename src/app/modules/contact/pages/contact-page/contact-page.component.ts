@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { NavbarComponent } from '../../../../shared/components/navbar/navbar.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
+import emailjs from '@emailjs/browser';
+import { NavbarComponent } from '../../../../shared/components/navbar/navbar.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FooterComponent } from '../../../../shared/components/footer/footer.component';
-import { CommonModule } from '@angular/common';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-contact-page',
@@ -36,7 +38,19 @@ export class ContactPageComponent {
 
   onSubmit() {
     if (this.form.valid) {
-      console.log(this.form.value);
+      emailjs.init(environment.publicKey);
+      emailjs.send(environment.serviceId, environment.templateId, {
+        publicKey: environment.publicKey,
+        name: this.form.value.name,
+        lastName: this.form.value.lastName,
+        email: this.form.value.email,
+        cellphone: this.form.value.cellphone,
+        subject: this.form.value.subject,
+        message: this.form.value.message,
+      });
+      
+      alert('Mensaje enviado.');
+      this.form.reset();
     }
   }
 
