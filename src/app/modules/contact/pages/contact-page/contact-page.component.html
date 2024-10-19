@@ -44,13 +44,13 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <mat-label>Teléfono</mat-label>
-          <input matInput type="number" formControlName="cellphone" required maxlength="10">
+          <mat-label>Celular</mat-label>
+          <input matInput formControlName="cellphone" maxlength="10" />
           <mat-error *ngIf="form.get('cellphone')?.hasError('required') && form.get('cellphone')?.touched">
-            El teléfono es obligatorio.
+            El número de celular es obligatorio.
           </mat-error>
-          <mat-error *ngIf="form.get('cellphone')?.hasError('maxlength') && form.get('cellphone')?.touched">
-            El teléfono no puede tener más de 10 dígitos.
+          <mat-error *ngIf="form.get('cellphone')?.hasError('invalidPhone') && form.get('cellphone')?.touched">
+            El teléfono debe tener exactamente 10 dígitos.
           </mat-error>
         </mat-form-field>
       </div>
