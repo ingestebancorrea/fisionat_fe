@@ -1,52 +1,63 @@
-<div class="footer-container">
-    <div class="footer-content">
-        <div class="footer-column">
-            <h2>Apartados</h2>
-            <ul>
-                <li><a href="https://www.certificacion1.com" target="_blank">Inicio</a></li>
-                <li><a href="https://www.certificacion1.com" target="_blank">Nosotros</a></li>
-                <li><a href="https://www.certificacion1.com" target="_blank">Servicios</a></li>
-                <li><a href="https://www.certificacion1.com" target="_blank">Contáctanos</a></li>
-            </ul>    
-        </div>
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="logo.png" alt="FisioNat Logo" class="footer-logo">
+        <p class="footer-description">
+          Rehabilitación virtual especializada desde la comodidad de tu hogar. 
+          Atención fisioterapéutica profesional con seguimiento personalizado.
+        </p>
+      </div>
 
-        <div class="footer-column">
-            <h2>Enlaces</h2>
-            <ul>
-                <li><a href="https://www.certificacion1.com" target="_blank">Certificaciones</a></li>
-                <li><a href="https://www.politicadatos.com" target="_blank">Política de tratamiento de datos</a></li>
-                <li><a href="https://www.terminoscondiciones.com" target="_blank">Términos y Condiciones</a></li>
-                <li><a href="https://www.terminoscondiciones.com" target="_blank">Preguntas habituales</a></li>
-            </ul>
-        </div>
+      <div class="footer-section">
+        <h3 class="footer-title">Navegación</h3>
+        <ul class="footer-links">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#beneficios">Beneficios</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#contacto">Agendar Consulta</a></li>
+        </ul>
+      </div>
 
-        <div class="footer-column">
-            <h2>Contacto</h2>
-            <div class="contact-item">
-                <mat-icon class="contact-icon">home</mat-icon>
-                <div class="contact-info">
-                    <p class="contact-label">Sede:</p>
-                    <p>San Fernando</p>
-                </div>   
+      <div class="footer-section">
+        <h3 class="footer-title">Servicios Virtuales</h3>
+        <ul class="footer-links">
+          <li><a href="#servicios">Terapia Física Virtual</a></li>
+          <li><a href="#servicios">Neurorehabilitación Virtual</a></li>
+          <li><a href="#servicios">Estimulación Temprana Virtual</a></li>
+          <li><a href="#servicios">Fisioterapia Geriátrica Virtual</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3 class="footer-title">Contacto</h3>
+        <div class="footer-contact">
+          <div class="contact-item">
+            <mat-icon class="contact-icon">videocam</mat-icon>
+            <div>
+              <p class="contact-text">Teleconsulta por Videollamada</p>
             </div>
-            <div class="contact-item">
-                <mat-icon class="contact-icon">mail</mat-icon>
-                <div class="contact-info">
-                    <p class="contact-label">Email:</p>
-                    <p>{{email}}</p>
-                </div>
+          </div>
+          <div class="contact-item">
+            <mat-icon class="contact-icon">email</mat-icon>
+            <div>
+              <p class="contact-text">{{email}}</p>
             </div>
-            <div class="contact-item">
-                <mat-icon class="contact-icon">call</mat-icon>
-                <div class="contact-info">
-                    <p class="contact-label">PBX:</p>
-                    <p>661619</p>
-                </div>
+          </div>
+          <div class="contact-item">
+            <mat-icon class="contact-icon">phone</mat-icon>
+            <div>
+              <p class="contact-text">661619</p>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+
+    <div class="footer-divider"></div>
 
     <div class="footer-bottom">
-        <p>© Copyright 2024 – Todos los derechos reservados – FisioNat IPS S.A. – Diseñado y desarrollado por Esteban Correa Pereira</p>
+      <p>© {{currentYear}} FisioNat IPS S.A. - Rehabilitación Virtual. Todos los derechos reservados.</p>
     </div>
-</div>
+  </div>
+</footer>
