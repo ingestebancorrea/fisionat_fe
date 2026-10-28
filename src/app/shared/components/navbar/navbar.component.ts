@@ -1,8 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatMenuModule } from '@angular/material/menu';
-import {  MatIconModule } from '@angular/material/icon';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
@@ -10,10 +7,6 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   selector: 'app-navbar',
   standalone: true,
   imports: [
-    MatToolbarModule,
-    RouterLink, 
-    RouterLinkActive,
-    MatMenuModule,
     CommonModule,
     MatIconModule
   ],
@@ -21,7 +14,6 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent implements OnInit {
-
   isMobile: boolean = false;
   mobileMenuOpen: boolean = false;
 
@@ -39,5 +31,4 @@ export class NavbarComponent implements OnInit {
   toggleMobileMenu() {
     this.mobileMenuOpen = !this.mobileMenuOpen;
   }
-
 }

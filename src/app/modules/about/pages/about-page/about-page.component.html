@@ -1,82 +1,115 @@
 <app-navbar></app-navbar>
 
-<div class="container">
-    <div class="hero-image">
-        <img src="nosotros.jpg" alt="Contacto">
-        <div class="overlay"></div>
-        <div class="hero-content">
-            <h1>¿Quiénes somos?</h1>
-            <p>Un grupo de profesionales dedicados y empáticos, que se esfuerzan cada día por acompañarte en tu proceso de recuperación.</p>
-        </div>
-    </div>
+<section class="about-hero">
+  <div class="about-hero-container">
+    <h1 class="about-hero-title">Sobre Nosotros</h1>
+    <p class="about-hero-subtitle">Conoce más sobre FisioNat IPS y nuestro compromiso con tu rehabilitación</p>
+  </div>
+</section>
 
-    <div class="info-section">
-        <div class="info-left">
-            <h2>FisioNat IPS</h2>
-            <p>En FisioNat, somos un centro de rehabilitación integral comprometido a mejorar la salud y bienestar del
-                paciente, donde nuestro enfoque se centra en la triada profesional-usuario-Familia, trabajamos en
-                estrecha
-                colaboración con nuestros pacientes y sus familias para garantizar una atención integral y humanizada,
-                adaptándonos a las necesidades únicas de cada paciente para proporcionar una atención efectiva y
-                eficiente,
-                incluyendo nuestra vocación por ayudar y servir, nos guiamos por un compromiso ético y humano para
-                mejorar
-                la calidad de vida de nuestros pacientes.</p>
-        </div>
-        <div class="info-right">
-            <img src="consultorio.png" alt="Contacto">
-        </div>
+<section class="about-main">
+  <div class="container">
+    <div class="about-main-grid">
+      <div class="about-main-content">
+        <h2 class="section-title">FisioNat IPS</h2>
+        <p class="about-main-text">
+          En FisioNat, somos un centro de rehabilitación integral comprometido a mejorar la salud y bienestar del paciente.
+          Nuestro enfoque se centra en la triada profesional-usuario-familia, trabajando en estrecha colaboración con
+          nuestros pacientes y sus familias para garantizar una atención integral y humanizada.
+        </p>
+        <p class="about-main-text">
+          Nos adaptamos a las necesidades únicas de cada paciente para proporcionar una atención efectiva y eficiente.
+          Guiados por nuestra vocación de ayudar y servir, nos regimos por un compromiso ético y humano para mejorar
+          la calidad de vida de nuestros pacientes.
+        </p>
+      </div>
+      <div class="about-main-image">
+        <img src="consultorio.png" alt="Instalaciones FisioNat">
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="tabs-section">
-        <app-tabs [tabs]="tabData"></app-tabs>
-    </div>
-
-    <div class="values-section">
-        <h2>Valores</h2>
-        <p>En FisioNat IPS nos distinguimos por…</p>
-        <div class="values-container">
-            <div class="value-item">
-                <div class="icon">
-                    <mat-icon>menu_book</mat-icon>
-                </div>
-                <p>Desarrollo profesional.</p>
-            </div>
-            <div class="value-item">
-                <div class="icon">
-                    <mat-icon>handshake</mat-icon>
-                </div>
-                <p>Integridad Ética.</p>
-            </div>
-            <div class="value-item">
-                <div class="icon">
-                    <mat-icon>lock</mat-icon>
-                </div>
-                <p>Confidencialidad y privacidad.</p>
-            </div>
+<section class="mission-vision">
+  <div class="container">
+    <div class="mv-grid">
+      <div class="mv-card">
+        <div class="mv-icon">
+          <mat-icon>flag</mat-icon>
         </div>
-
-        <div class="values-container">
-            <div class="value-item">
-                <div class="icon">
-                    <mat-icon>favorite</mat-icon>
-                </div>
-                <p>Respeto y dignidad.</p>
-            </div>
-            <div class="value-item">
-                <div class="icon">
-                    <mat-icon>star</mat-icon>
-                </div>
-                <p>Servicios de alta calidad.</p>
-            </div>
-            <div class="value-item">
-                <div class="icon">
-                    <mat-icon>emoji_objects</mat-icon>
-                </div>
-                <p>Excelencia e innovación.</p>
-            </div>
+        <h3>Misión</h3>
+        <p>
+          Brindar servicios de rehabilitación integral de alta calidad, con un enfoque humano y personalizado,
+          promoviendo la recuperación funcional y el bienestar de nuestros pacientes.
+        </p>
+      </div>
+      <div class="mv-card">
+        <div class="mv-icon">
+          <mat-icon>visibility</mat-icon>
         </div>
+        <h3>Visión</h3>
+        <p>
+          Ser reconocidos como el centro de rehabilitación integral líder en la región, destacando por la excelencia
+          en la atención, la innovación terapéutica y el compromiso con la calidad de vida.
+        </p>
+      </div>
     </div>
-</div>
+  </div>
+</section>
+
+<section class="values-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Nuestros Valores</h2>
+      <p class="section-subtitle">Los principios que guían nuestra labor diaria</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">
+          <mat-icon>school</mat-icon>
+        </div>
+        <h4>Desarrollo Profesional</h4>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">
+          <mat-icon>handshake</mat-icon>
+        </div>
+        <h4>Integridad Ética</h4>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">
+          <mat-icon>lock</mat-icon>
+        </div>
+        <h4>Confidencialidad y Privacidad</h4>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">
+          <mat-icon>favorite</mat-icon>
+        </div>
+        <h4>Respeto y Dignidad</h4>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">
+          <mat-icon>star</mat-icon>
+        </div>
+        <h4>Servicios de Alta Calidad</h4>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">
+          <mat-icon>lightbulb</mat-icon>
+        </div>
+        <h4>Excelencia e Innovación</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="cta-container">
+    <h2>¿Necesitas atención especializada?</h2>
+    <p>Estamos aquí para acompañarte en tu proceso de recuperación</p>
+    <a routerLink="/contact" class="btn btn-white">Solicitar Cita</a>
+  </div>
+</section>
 
 <app-footer></app-footer>
