@@ -14,18 +14,24 @@
         <a href="#contacto" class="nav-link nav-link-cta">Agendar Consulta</a>
       </div>
 
-      <button class="menu-button" (click)="toggleMobileMenu()" *ngIf="isMobile">
-        <mat-icon>{{ mobileMenuOpen ? 'close' : 'menu' }}</mat-icon>
-      </button>
+      @if (isMobile) {
+        <button class="menu-button" (click)="toggleMobileMenu()">
+          <mat-icon>{{ mobileMenuOpen ? 'close' : 'menu' }}</mat-icon>
+        </button>
+      }
     </div>
   </nav>
 
-  <div class="mobile-menu" *ngIf="isMobile && mobileMenuOpen">
-    <a href="#inicio" (click)="toggleMobileMenu()">Inicio</a>
-    <a href="#beneficios" (click)="toggleMobileMenu()">Beneficios</a>
-    <a href="#servicios" (click)="toggleMobileMenu()">Servicios</a>
-    <a href="#contacto" (click)="toggleMobileMenu()">Agendar Consulta</a>
-  </div>
+  @if (isMobile && mobileMenuOpen) {
+    <div class="mobile-menu">
+      <a href="#inicio" (click)="toggleMobileMenu()">Inicio</a>
+      <a href="#beneficios" (click)="toggleMobileMenu()">Beneficios</a>
+      <a href="#servicios" (click)="toggleMobileMenu()">Servicios</a>
+      <a href="#contacto" (click)="toggleMobileMenu()">Agendar Consulta</a>
+    </div>
+  }
 
-  <div class="menu-overlay" *ngIf="isMobile && mobileMenuOpen" (click)="toggleMobileMenu()"></div>
+  @if (isMobile && mobileMenuOpen) {
+    <div class="menu-overlay" (click)="toggleMobileMenu()"></div>
+  }
 </header>

@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { CommonModule } from '@angular/common';
+
 import { phoneValidator } from '../../../../core/validators/phone.validator';
 import { environment } from '../../../../../environments/environment';
 import emailjs from '@emailjs/browser';
@@ -14,15 +14,14 @@ import emailjs from '@emailjs/browser';
 @Component({
     selector: 'app-home-page',
     imports: [
-        NavbarComponent,
-        FooterComponent,
-        ReactiveFormsModule,
-        MatIconModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatInputModule,
-        CommonModule
-    ],
+    NavbarComponent,
+    FooterComponent,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule
+],
     templateUrl: './home-page.component.html',
     styleUrl: './home-page.component.css'
 })

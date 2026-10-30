@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { CommonModule } from '@angular/common';
+
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
     selector: 'app-navbar',
     imports: [
-        CommonModule,
-        MatIconModule
-    ],
+    MatIconModule
+],
     templateUrl: './navbar.component.html',
     styleUrl: './navbar.component.css'
 })
