@@ -5,7 +5,7 @@
     <div class="hero-content">
       <h1 class="hero-title">Rehabilitación virtual<br>desde tu hogar</h1>
       <p class="hero-subtitle">
-        Recibe atención fisioterapéutica especializada a través de teleconsulta. 
+        Recibe atención fisioterapéutica especializada a través de teleconsulta.
         Ejercicios guiados, seguimiento personalizado y recuperación efectiva con profesionales calificados.
       </p>
       <div class="hero-buttons">
@@ -183,37 +183,53 @@
             <mat-form-field appearance="outline" class="form-field">
               <mat-label>Nombre *</mat-label>
               <input matInput formControlName="name">
-              <mat-error *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched">Requerido</mat-error>
+              @if (form.get('name')?.hasError('required') && form.get('name')?.touched) {
+                <mat-error>Requerido</mat-error>
+              }
             </mat-form-field>
             <mat-form-field appearance="outline" class="form-field">
               <mat-label>Apellidos *</mat-label>
               <input matInput formControlName="lastName">
-              <mat-error *ngIf="form.get('lastName')?.hasError('required') && form.get('lastName')?.touched">Requerido</mat-error>
+              @if (form.get('lastName')?.hasError('required') && form.get('lastName')?.touched) {
+                <mat-error>Requerido</mat-error>
+              }
             </mat-form-field>
           </div>
           <div class="form-row">
             <mat-form-field appearance="outline" class="form-field">
               <mat-label>Correo Electrónico *</mat-label>
               <input matInput formControlName="email" type="email">
-              <mat-error *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched">Requerido</mat-error>
-              <mat-error *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched">Inválido</mat-error>
+              @if (form.get('email')?.hasError('required') && form.get('email')?.touched) {
+                <mat-error>Requerido</mat-error>
+              }
+              @if (form.get('email')?.hasError('email') && form.get('email')?.touched) {
+                <mat-error>Inválido</mat-error>
+              }
             </mat-form-field>
             <mat-form-field appearance="outline" class="form-field">
               <mat-label>Celular *</mat-label>
               <input matInput formControlName="cellphone" maxlength="10">
-              <mat-error *ngIf="form.get('cellphone')?.hasError('required') && form.get('cellphone')?.touched">Requerido</mat-error>
-              <mat-error *ngIf="form.get('cellphone')?.hasError('invalidPhone') && form.get('cellphone')?.touched">10 dígitos</mat-error>
+              @if (form.get('cellphone')?.hasError('required') && form.get('cellphone')?.touched) {
+                <mat-error>Requerido</mat-error>
+              }
+              @if (form.get('cellphone')?.hasError('invalidPhone') && form.get('cellphone')?.touched) {
+                <mat-error>10 dígitos</mat-error>
+              }
             </mat-form-field>
           </div>
           <mat-form-field appearance="outline" class="form-field-full">
             <mat-label>Servicio de Interés *</mat-label>
             <input matInput formControlName="subject" placeholder="Terapia Física / Neurorehabilitación / Estimulación Temprana / Geriátrica">
-            <mat-error *ngIf="form.get('subject')?.hasError('required') && form.get('subject')?.touched">Requerido</mat-error>
+            @if (form.get('subject')?.hasError('required') && form.get('subject')?.touched) {
+              <mat-error>Requerido</mat-error>
+            }
           </mat-form-field>
           <mat-form-field appearance="outline" class="form-field-full">
             <mat-label>Descripción del Caso *</mat-label>
             <textarea matInput formControlName="message" rows="4" placeholder="Describe tu diagnóstico, síntomas o motivo de consulta"></textarea>
-            <mat-error *ngIf="form.get('message')?.hasError('required') && form.get('message')?.touched">Requerido</mat-error>
+            @if (form.get('message')?.hasError('required') && form.get('message')?.touched) {
+              <mat-error>Requerido</mat-error>
+            }
           </mat-form-field>
           <button type="submit" class="submit-btn" [disabled]="form.invalid">Solicitar Consulta Virtual</button>
         </form>

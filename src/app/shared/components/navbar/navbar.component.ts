@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { CommonModule } from '@angular/common';
+
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
-  selector: 'app-navbar',
-  standalone: true,
-  imports: [
-    CommonModule,
+    selector: 'app-navbar',
+    imports: [
     MatIconModule
-  ],
-  templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+],
+    templateUrl: './navbar.component.html',
+    styleUrl: './navbar.component.css'
 })
 export class NavbarComponent implements OnInit {
   isMobile: boolean = false;
