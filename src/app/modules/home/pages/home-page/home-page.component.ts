@@ -12,20 +12,19 @@ import { environment } from '../../../../../environments/environment';
 import emailjs from '@emailjs/browser';
 
 @Component({
-  selector: 'app-home-page',
-  standalone: true,
-  imports: [
-    NavbarComponent,
-    FooterComponent,
-    ReactiveFormsModule,
-    MatIconModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    CommonModule
-  ],
-  templateUrl: './home-page.component.html',
-  styleUrl: './home-page.component.css'
+    selector: 'app-home-page',
+    imports: [
+        NavbarComponent,
+        FooterComponent,
+        ReactiveFormsModule,
+        MatIconModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        CommonModule
+    ],
+    templateUrl: './home-page.component.html',
+    styleUrl: './home-page.component.css'
 })
 export class HomePageComponent {
   form: FormGroup;
