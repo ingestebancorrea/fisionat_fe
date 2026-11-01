@@ -80,35 +80,40 @@
       <h2 class="section-title">Servicios de rehabilitación virtual</h2>
       <p class="section-subtitle">Atención especializada a través de teleconsulta</p>
     </div>
-    <div class="services-grid">
-      <article class="service-card">
-        <div class="service-icon">
-          <mat-icon>accessibility_new</mat-icon>
+
+    <div class="services-carousel-wrapper">
+      <button class="carousel-btn carousel-btn-prev" (click)="prevServiceSlide()" aria-label="Ver servicio anterior">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+
+      <div class="carousel-viewport" (mouseenter)="stopAutoSlide()" (mouseleave)="startAutoSlide()">
+        <div class="carousel-track" [style.transform]="'translateX(-' + currentServiceSlide * 100 + '%)'">
+          @for (service of allServices; track service.title) {
+            <article class="service-card">
+              <div class="service-icon">
+                <mat-icon>{{ service.icon }}</mat-icon>
+              </div>
+              <h3>{{ service.title }}</h3>
+              <p>{{ service.description }}</p>
+            </article>
+          }
         </div>
-        <h3>Terapia física virtual</h3>
-        <p>Evaluación, ejercicios terapéuticos guiados y seguimiento para dolor, lesiones y postoperatorio.</p>
-      </article>
-      <article class="service-card">
-        <div class="service-icon">
-          <mat-icon>psychology</mat-icon>
-        </div>
-        <h3>Neurorehabilitación virtual</h3>
-        <p>Rehabilitación para ACV, traumatismo, Parkinson y otras patologías neurológicas desde casa.</p>
-      </article>
-      <article class="service-card">
-        <div class="service-icon">
-          <mat-icon>child_care</mat-icon>
-        </div>
-        <h3>Estimulación temprana virtual</h3>
-        <p>Orientación terapéutica a padres con ejercicios para potenciar el desarrollo infantil.</p>
-      </article>
-      <article class="service-card">
-        <div class="service-icon">
-          <mat-icon>elderly</mat-icon>
-        </div>
-        <h3>Fisioterapia geriátrica virtual</h3>
-        <p>Fortalecimiento, equilibrio, marcha y prevención de caídas para adultos mayores.</p>
-      </article>
+      </div>
+
+      <button class="carousel-btn carousel-btn-next" (click)="nextServiceSlide()" aria-label="Ver siguiente servicio">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+
+    <div class="carousel-dots">
+      @for (service of allServices; track service.title; let i = $index) {
+        <button
+          class="carousel-dot"
+          [class.active]="i === currentServiceSlide"
+          (click)="goToServiceSlide(i)"
+          [attr.aria-label]="'Ir al servicio ' + (i + 1)">
+        </button>
+      }
     </div>
   </div>
 </section>
@@ -219,7 +224,11 @@
           </div>
           <mat-form-field appearance="outline" class="form-field-full">
             <mat-label>Servicio de Interés *</mat-label>
-            <input matInput formControlName="subject" placeholder="Terapia Física / Neurorehabilitación / Estimulación Temprana / Geriátrica">
+            <mat-select formControlName="subject" placeholder="Selecciona un servicio">
+              @for (service of allServices; track service.title) {
+                <mat-option [value]="service.title">{{ service.title }}</mat-option>
+              }
+            </mat-select>
             @if (form.get('subject')?.hasError('required') && form.get('subject')?.touched) {
               <mat-error>Requerido</mat-error>
             }
