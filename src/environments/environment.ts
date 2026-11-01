@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  email: ' fisionat1416@gmail.com',
+  email: 'fisionat1416@gmail.com'
 };

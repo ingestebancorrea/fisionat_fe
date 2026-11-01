@@ -11,6 +11,6 @@ import { MatIconModule } from '@angular/material/icon';
     styleUrl: './footer.component.css'
 })
 export class FooterComponent {
-  email = "contacto@fisionat.com";
+  email = "fisionat1416@gmail.com";
   currentYear: number = new Date().getFullYear();
 }
