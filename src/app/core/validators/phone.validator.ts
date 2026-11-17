@@ -6,8 +6,8 @@ export function phoneValidator(): ValidatorFn {
     if (!value) {
       return null;
     }
-    const phoneRegex = /^[0-9]{10}$/;
-    if (phoneRegex.test(value)) {
+    const phoneRegex = /^[+\d][\d\s\-()]{6,19}$/;
+    if (phoneRegex.test(String(value).trim())) {
       return null;
     }
     return { invalidPhone: true };
