@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import { NavbarComponent } from '../../../../shared/components/navbar/navbar.component';
 import { FooterComponent } from '../../../../shared/components/footer/footer.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -7,13 +8,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { finalize } from 'rxjs';
 import { phoneValidator } from '../../../../core/validators/phone.validator';
-import { environment } from '../../../../../environments/environment';
-import emailjs from '@emailjs/browser';
+import { ContactApiService } from '../../../../core/services/contact-api.service';
+import { ContactRequest } from '../../../../core/models/contact-request.model';
+import { EmailResponse } from '../../../../core/models/email-response.model';
+import { ContactResponseMessage, getContactResponseMessage } from '../../../../core/enums/contact-response-message.enum';
 
 @Component({
-    selector: 'app-home-page',
-    imports: [
+  selector: 'app-home-page',
+  imports: [
     NavbarComponent,
     FooterComponent,
     ReactiveFormsModule,
@@ -22,13 +26,14 @@ import emailjs from '@emailjs/browser';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule
-],
-    templateUrl: './home-page.component.html',
-    styleUrl: './home-page.component.css'
+  ],
+  templateUrl: './home-page.component.html',
+  styleUrl: './home-page.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomePageComponent {
+export class HomePageComponent implements OnInit, OnDestroy {
   form: FormGroup;
-  email: string = environment.email;
+  email = 'fisionat1416@gmail.com';
 
   allServices = [
     {
@@ -69,16 +74,24 @@ export class HomePageComponent {
   ];
 
   currentServiceSlide = 0;
-  private autoSlideInterval: any;
+  isSubmitting = false;
+  notification: { type: 'success' | 'error'; message: string } | null = null;
+  isNotificationClosing = false;
+
+  private autoSlideInterval: ReturnType<typeof setInterval> | null = null;
+  private notificationTimer: ReturnType<typeof setTimeout> | null = null;
+  private notificationCloseTimer: ReturnType<typeof setTimeout> | null = null;
+  private readonly contactApiService = inject(ContactApiService);
+  private readonly cdr = inject(ChangeDetectorRef);
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
-      name: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
+      lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
+      email: ['', [Validators.required, Validators.email, Validators.maxLength(254)]],
       cellphone: ['', [Validators.required, phoneValidator()]],
-      subject: ['', Validators.required],
-      message: ['', Validators.required]
+      subject: ['', [Validators.required, Validators.maxLength(255)]],
+      message: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(2000)]]
     });
   }
 
@@ -88,6 +101,7 @@ export class HomePageComponent {
 
   ngOnDestroy(): void {
     this.stopAutoSlide();
+    this.clearNotificationTimers();
   }
 
   startAutoSlide(): void {
@@ -100,6 +114,7 @@ export class HomePageComponent {
   stopAutoSlide(): void {
     if (this.autoSlideInterval) {
       clearInterval(this.autoSlideInterval);
+      this.autoSlideInterval = null;
     }
   }
 
@@ -121,30 +136,87 @@ export class HomePageComponent {
     this.startAutoSlide();
   }
 
-  onSubmit() {
-    if (this.form.valid) {
-      try {
-        const publicKey = (import.meta as any).env?.['NG_APP_PUBLIC_KEY'] || (import.meta as any).env?.['VITE_PUBLIC_KEY'];
-        const serviceId = (import.meta as any).env?.['NG_APP_SERVICE_ID'] || (import.meta as any).env?.['VITE_SERVICE_ID'];
-        const templateId = (import.meta as any).env?.['NG_APP_TEMPLATE_ID'] || (import.meta as any).env?.['VITE_TEMPLATE_ID'];
-        
-        if (publicKey && serviceId && templateId) {
-          emailjs.init(publicKey);
-          emailjs.send(serviceId, templateId, {
-            name: this.form.value.name,
-            lastName: this.form.value.lastName,
-            email: this.form.value.email,
-            cellphone: this.form.value.cellphone,
-            subject: this.form.value.subject,
-            message: this.form.value.message,
-          });
-        }
-      } catch (e) {
-        console.log(e);
-      }
-
-      alert('Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto.');
-      this.form.reset();
+  onSubmit(): void {
+    if (this.form.invalid || this.isSubmitting) {
+      this.form.markAllAsTouched();
+      return;
     }
+
+    const request: ContactRequest = {
+      name: String(this.form.value.name ?? '').trim(),
+      lastName: String(this.form.value.lastName ?? '').trim(),
+      email: String(this.form.value.email ?? '').trim(),
+      cellphone: String(this.form.value.cellphone ?? '').trim(),
+      subject: String(this.form.value.subject ?? '').trim(),
+      message: String(this.form.value.message ?? '').trim()
+    };
+
+    this.isSubmitting = true;
+    this.contactApiService.sendWelcome(request).pipe(
+      finalize(() => {
+        this.isSubmitting = false;
+        this.cdr.markForCheck();
+      })
+    ).subscribe({
+      next: (response: EmailResponse) => {
+        if (response?.success) {
+          this.showNotification('success', ContactResponseMessage.SUCCESS);
+          this.form.reset();
+        } else {
+          this.showNotification('error', ContactResponseMessage.UNKNOWN_ERROR);
+        }
+      },
+      error: (error: unknown) => {
+        this.showNotification('error', this.extractErrorMessage(error));
+      }
+    });
+  }
+
+  closeNotification(): void {
+    if (!this.notification || this.isNotificationClosing) {
+      return;
+    }
+    this.clearNotificationTimers();
+    this.isNotificationClosing = true;
+    this.cdr.markForCheck();
+    this.notificationCloseTimer = setTimeout(() => {
+      this.notification = null;
+      this.isNotificationClosing = false;
+      this.notificationCloseTimer = null;
+      this.cdr.markForCheck();
+    }, 250);
+  }
+
+  private showNotification(type: 'success' | 'error', message: string): void {
+    this.clearNotificationTimers();
+    this.notification = { type, message };
+    this.isNotificationClosing = false;
+    this.cdr.markForCheck();
+    this.notificationTimer = setTimeout(() => {
+      this.notificationTimer = null;
+      this.closeNotification();
+    }, 5000);
+  }
+
+  private clearNotificationTimers(): void {
+    if (this.notificationTimer) {
+      clearTimeout(this.notificationTimer);
+      this.notificationTimer = null;
+    }
+    if (this.notificationCloseTimer) {
+      clearTimeout(this.notificationCloseTimer);
+      this.notificationCloseTimer = null;
+    }
+  }
+
+  private extractErrorMessage(error: unknown): string {
+    if (error instanceof HttpErrorResponse) {
+      return getContactResponseMessage(error.status);
+    }
+    if (typeof error === 'object' && error !== null && 'status' in error) {
+      const status = (error as { status?: number }).status;
+      return getContactResponseMessage(status);
+    }
+    return ContactResponseMessage.UNKNOWN_ERROR;
   }
 }
