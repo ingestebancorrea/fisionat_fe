@@ -240,8 +240,21 @@
               <mat-error>Requerido</mat-error>
             }
           </mat-form-field>
-          <button type="submit" class="submit-btn" [disabled]="form.invalid">Solicitar Consulta Virtual</button>
+          <button type="submit" class="submit-btn" [disabled]="form.invalid || isSubmitting" [attr.aria-busy]="isSubmitting">
+            @if (isSubmitting) {
+              <span class="btn-spinner" aria-hidden="true"></span>
+            }
+            <span>Solicitar Consulta Virtual</span>
+          </button>
         </form>
+        @if (notification) {
+          <div class="contact-notification" [class.success]="notification.type === 'success'" [class.error]="notification.type === 'error'" [class.closing]="isNotificationClosing">
+            <span class="contact-notification-message">{{ notification.message }}</span>
+            <button type="button" class="contact-notification-close" (click)="closeNotification()" aria-label="Cerrar notificación">
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+        }
       </div>
     </div>
   </div>
