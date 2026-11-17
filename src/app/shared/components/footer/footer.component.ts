@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
+
 @Component({
-  selector: 'app-footer',
-  standalone: true,
-  imports: [
+    selector: 'app-footer',
+    imports: [
     MatIconModule
-  ],
-  templateUrl: './footer.component.html',
-  styleUrl: './footer.component.css'
+],
+    templateUrl: './footer.component.html',
+    styleUrl: './footer.component.css'
 })
 export class FooterComponent {
-  email = "contacto@fisionat.com";
+  email = "fisionat1416@gmail.com";
+  currentYear: number = new Date().getFullYear();
 }

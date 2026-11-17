@@ -1,7 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html { 
+  height: 100%; 
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+body { 
+  margin: 0; 
+  font-family: 'Roboto', "Helvetica Neue", sans-serif; 
+}
+
+:root {
+  --primary-pink: rgb(247, 159, 181);
+  --primary-cyan: rgb(124, 225, 233);
+  --text-dark: #1a1a1a;
+  --text-light: #666666;
+  --bg-light: #ffffff;
+  --bg-section: #fafafa;
+}
+
+* {
+  box-sizing: border-box;
+}
 
 .services-section {
     display: flex;
