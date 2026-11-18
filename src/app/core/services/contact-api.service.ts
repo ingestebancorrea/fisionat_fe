@@ -9,7 +9,10 @@ import { EmailResponse } from '../models/email-response.model';
 })
 export class ContactApiService {
   private readonly http = inject(HttpClient);
-  private readonly baseUrl = `${import.meta.env['NG_APP_MAIL_BASE_URL']}/api/v1`;
+
+  // El builder sustituye esta expresión en tiempo de compilación. El encadenamiento
+  // opcional evita el TypeError si `import.meta.env` no llega a estar definido.
+  private readonly baseUrl = `${import.meta.env?.['NG_APP_MAIL_BASE_URL'] ?? ''}/api/v1`;
 
   sendWelcome(request: ContactRequest): Observable<EmailResponse> {
     return this.http.post<EmailResponse>(`${this.baseUrl}/mail/welcome`, request);
