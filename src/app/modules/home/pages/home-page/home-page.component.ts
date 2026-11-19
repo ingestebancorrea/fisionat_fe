@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, OnDestroy, OnInit, inject } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NavbarComponent } from '../../../../shared/components/navbar/navbar.component';
 import { FooterComponent } from '../../../../shared/components/footer/footer.component';
@@ -105,7 +105,9 @@ export class HomePageComponent implements OnInit, OnDestroy {
   }
 
   startAutoSlide(): void {
-    this.stopAutoSlide();
+    if (this.autoSlideInterval) {
+      return;
+    }
     this.autoSlideInterval = setInterval(() => {
       this.nextServiceSlide();
     }, 3000);
@@ -121,19 +123,31 @@ export class HomePageComponent implements OnInit, OnDestroy {
   prevServiceSlide(): void {
     this.stopAutoSlide();
     this.currentServiceSlide = (this.currentServiceSlide - 1 + this.allServices.length) % this.allServices.length;
+    this.cdr.markForCheck();
     this.startAutoSlide();
   }
 
   nextServiceSlide(): void {
     this.stopAutoSlide();
     this.currentServiceSlide = (this.currentServiceSlide + 1) % this.allServices.length;
+    this.cdr.markForCheck();
     this.startAutoSlide();
   }
 
   goToServiceSlide(index: number): void {
     this.stopAutoSlide();
     this.currentServiceSlide = index;
+    this.cdr.markForCheck();
     this.startAutoSlide();
+  }
+
+  @HostListener('window:resize')
+  onWindowResize(): void {
+    this.startAutoSlide();
+  }
+
+  get currentServiceName(): string {
+    return this.allServices[this.currentServiceSlide]?.title ?? '';
   }
 
   onSubmit(): void {
