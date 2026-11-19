@@ -86,7 +86,7 @@
         <mat-icon>chevron_left</mat-icon>
       </button>
 
-      <div class="carousel-viewport" (mouseenter)="stopAutoSlide()" (mouseleave)="startAutoSlide()">
+      <div class="carousel-viewport">
         <div class="carousel-track" [style.transform]="'translateX(-' + currentServiceSlide * 100 + '%)'">
           @for (service of allServices; track service.title) {
             <article class="service-card">
@@ -104,6 +104,9 @@
         <mat-icon>chevron_right</mat-icon>
       </button>
     </div>
+    @if (currentServiceName) {
+      <span class="sr-only" role="status">Servicio actual: {{ currentServiceName }}</span>
+    }
 
     <div class="carousel-dots">
       @for (service of allServices; track service.title; let i = $index) {
