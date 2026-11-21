@@ -1,38 +1,37 @@
-<mat-toolbar class="navbar">
-    <div class="logo-container">
-        <a routerLink="/" mat-button>
-            <img src="logo.png" alt="Logo">
+<header class="header">
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo-container">
+        <a href="#inicio" class="logo-link">
+          <img src="logo.png" alt="FisioNat Logo">
         </a>
-    </div>
+      </div>
 
-    <div class="nav-links">
-        <a routerLink="/about" mat-button routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
-            Nosotros
-        </a>
-        <a mat-button [matMenuTriggerFor]="lazyMenu" routerLinkActive="active-link">
-            Servicios
-        </a>
-        <a routerLink="/contact" mat-button routerLinkActive="active-link">
-            Contáctanos
-        </a>
-    </div>
-    
-    <button mat-icon-button (click)="toggleMobileMenu()" class="menu-button" *ngIf="isMobile">
-        <mat-icon>menu</mat-icon>
-    </button>
-    
-    <div *ngIf="isMobile && mobileMenuOpen" class="mobile-menu">
-        <a routerLink="/about" mat-button routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Nosotros</a>
-        <a mat-button [matMenuTriggerFor]="lazyMenu" routerLinkActive="active-link">Servicios</a>
-        <a routerLink="/contact" mat-button routerLinkActive="active-link">Contáctanos</a>
-    </div>
+      <div class="nav-links">
+        <a href="#inicio" class="nav-link">Inicio</a>
+        <a href="#beneficios" class="nav-link">Beneficios</a>
+        <a href="#servicios" class="nav-link">Servicios</a>
+        <a href="#contacto" class="nav-link nav-link-cta">Agendar Consulta</a>
+      </div>
 
-    <div *ngIf="isMobile && mobileMenuOpen" class="overlay" (click)="toggleMobileMenu()"></div>
-</mat-toolbar>
+      @if (isMobile) {
+        <button class="menu-button" (click)="toggleMobileMenu()">
+          <mat-icon>{{ mobileMenuOpen ? 'close' : 'menu' }}</mat-icon>
+        </button>
+      }
+    </div>
+  </nav>
 
-<mat-menu #lazyMenu="matMenu">
-    <button mat-menu-item [routerLink]="'/services/physical-therapy'">Terapia física</button>
-    <button mat-menu-item [routerLink]="'/services/neurorehabilitation'">Neurorehabilitación</button>
-    <button mat-menu-item [routerLink]="'/services/early-stimulation'">Estimulación temprana</button>
-    <button mat-menu-item [routerLink]="'/services/geriatric-physiotherapy'">Fisioterapia geriátrica</button>
-</mat-menu>
+  @if (isMobile && mobileMenuOpen) {
+    <div class="mobile-menu">
+      <a href="#inicio" (click)="toggleMobileMenu()">Inicio</a>
+      <a href="#beneficios" (click)="toggleMobileMenu()">Beneficios</a>
+      <a href="#servicios" (click)="toggleMobileMenu()">Servicios</a>
+      <a href="#contacto" (click)="toggleMobileMenu()">Agendar Consulta</a>
+    </div>
+  }
+
+  @if (isMobile && mobileMenuOpen) {
+    <div class="menu-overlay" (click)="toggleMobileMenu()"></div>
+  }
+</header>
