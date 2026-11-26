@@ -1,6 +1,14 @@
 import { bootstrapApplication } from '@angular/platform-browser';
+import { isDevMode } from '@angular/core';
+import { inject } from '@vercel/analytics';
 import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
 
 bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));
+
+// Vercel Web Analytics: inyectar una sola vez, solo en el cliente.
+// En `ng serve` (desarrollo) los eventos se muestran en consola; en producción se envían a Vercel.
+inject({
+  mode: isDevMode() ? 'development' : 'production',
+});
